@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Hamza Saeed — Web Application & API Penetration Tester and Security Researcher.">
+<title>Hamza Saeed — Web Application & API Penetration Tester</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="#home" aria-label="Home"><span>HS</span><i></i></a>
+  <nav class="desktop-nav" aria-label="Primary navigation">
+    <a href="#about">About</a>
+    <a href="#experience">Selected Security Work</a>
+    <a href="#research">Research</a>
+    <a href="#projects">Projects</a>
+    <a href="#credentials">Credentials</a>
+    <a href="#contact">Contact</a>
+  </nav>
+  <div class="header-actions">
+    <button class="theme-toggle" id="themeToggle" type="button"><span id="themeIcon">☼</span><span id="themeLabel">Light</span></button>
+    <a class="nav-cta" href="assets/Hamza-Saeed-CV.pdf" target="_blank" rel="noopener">View CV <span>↗</span></a>
+  </div>
+</header>
+
+<main id="home">
+<section class="hero shell">
+  <div class="hero-main">
+    <div class="eyebrow"><span class="pulse"></span> WEB APPLICATION &amp; API SECURITY</div>
+    <h1>Hamza <em>Saeed</em></h1>
+    <p class="hero-lede">Web Application and API Penetration Tester and Security Researcher focused on real application behavior, access control, authentication, business logic, API workflows and practical security validation.</p>
+    <div class="hero-actions">
+      <a class="button button-primary" href="#experience">Explore experience <span>↓</span></a>
+      <a class="button button-ghost" href="assets/Hamza-Saeed-CV.pdf" target="_blank" rel="noopener">Open CV <span>↗</span></a>
+    </div>
+    <div class="social-row">
+      <a href="https://github.com/hamzasaeed687" target="_blank" rel="noopener">GitHub <span>↗</span></a>
+      <a href="https://linkedin.com/in/hamza-saeed-a8143332a" target="_blank" rel="noopener">LinkedIn <span>↗</span></a>
+      <a href="mailto:hamzasaeed1098@gmail.com">Email <span>↗</span></a>
+    </div>
+  </div>
+  <aside class="hero-panel">
+    <span class="panel-label">PROFILE / 01</span>
+    <div class="panel-role">Penetration<br><strong>Tester</strong></div>
+    <div class="panel-divider"></div>
+    <dl class="profile-list">
+      <div><dt>Specialty</dt><dd>Web + API Security</dd></div>
+      <div><dt>Focus</dt><dd>Access Control</dd></div>
+      <div><dt>Methods</dt><dd>Manual + Automated</dd></div>
+      <div><dt>Automation</dt><dd>Python / Selenium / Locust</dd></div>
+    </dl>
+    <div class="panel-foot"><span>PK</span><strong>SECURITY RESEARCH</strong></div>
+  </aside>
+</section>
+
+<section id="about" class="section shell">
+  <div class="section-kicker">01 · ABOUT</div>
+  <div class="section-intro two-col">
+    <h2>Security testing with a<br><em>hands-on mindset.</em></h2>
+    <div>
+      <p>I approach each assessment from the application's actual behavior and attack surface, adapting the testing strategy to the scenario presented rather than limiting an assessment to a single vulnerability category.</p>
+      <p>My work spans web applications and APIs, with controlled multi-account testing, manual HTTP analysis, parameter manipulation, workflow validation and purpose-built automation.</p>
+    </div>
+  </div>
+  <div class="metrics">
+    <div><strong>WEB</strong><span>Application Security</span></div>
+    <div><strong>API</strong><span>Security Testing</span></div>
+    <div><strong>AC</strong><span>Access Control</span></div>
+    <div><strong>PY</strong><span>Security Automation</span></div>
+  </div>
+</section>
+
+<section id="experience" class="section shell section-border-top">
+  <div class="section-heading">
+    <div><span class="eyebrow-text">02 · SELECTED SECURITY WORK</span><h2>Findings built around <em>evidence.</em></h2></div>
+    <p class="section-intro">Sanitized examples of authorized security testing. Target names, hosts, session material and other sensitive details are intentionally removed.</p>
+  </div>
+  <div class="work-grid">
+    <article class="work-card featured">
+      <div class="work-top"><span class="severity high">HIGH</span><span>BOLA / IDOR · BFLA</span></div>
+      <h3>Cross-account service control</h3>
+      <p>A service-control function accepted an object identifier without enforcing ownership at the server side. Using two controlled test accounts, changing the service identifier caused the function to act on the other account's service.</p>
+      <div class="poc"><span>POC · SANITIZED</span><code>GET /disable-service/{other-test-account-service-id}</code><small>Result: function executed against a resource owned by the second controlled account.</small></div>
+      <div class="card-meta"><span>Impact</span><strong>Unauthorized modification</strong><span>Fix</span><strong>Server-side ownership + role checks</strong></div>
+      <img class="evidence" src="assets/evidence/poc-bola-bfla-sanitized.png" alt="Sanitized Burp Suite proof of concept showing a service-disable request and response status">
+    </article>
+
+    <article class="work-card">
+      <div class="work-top"><span class="severity info">INFORMATIONAL</span><span>CSRF · HTTP METHOD</span></div>
+      <h3>Password-reset request handling</h3>
+      <p>A Bugcrowd research submission documented reuse of the same CSRF token across multiple POST requests and acceptance of a GET request for a password-reset action, weakening the intended request-protection model.</p>
+      <div class="poc"><span>RESEARCH ARTIFACT</span><code>POST → reused token<br>GET → action accepted</code><small>Reported as an action-specific unauthenticated CSRF/method-handling issue.</small></div>
+      <img class="evidence" src="assets/evidence/bugcrowd-csrf-sanitized.png" alt="Sanitized Bugcrowd submission showing a CSRF and HTTP method handling finding">
+    </article>
+
+    <article class="work-card">
+      <div class="work-top"><span class="severity medium">PERFORMANCE</span><span>LOAD / STRESS TESTING</span></div>
+      <h3>Controlled Locust stress assessment</h3>
+      <p>Locust was used to simulate concurrent users and observe response latency, throughput and failure behavior. The results show degradation under concurrency rather than a simple steady increase in latency.</p>
+      <div class="stress-stats">
+        <div><strong>200</strong><span>users</span></div><div><strong>11%</strong><span>failures</span></div><div><strong>23.4s</strong><span>avg latency</span></div><div><strong>81.7s</strong><span>max latency</span></div>
+      </div>
+      <img class="evidence" src="assets/evidence/locust-200-users-sanitized.png" alt="Sanitized Locust results for a 200-user load test">
+      <div class="analysis"><span>BOTTLENECK ANALYSIS</span><p>At 200 users, the median response is already 20 seconds and the 95th percentile reaches 81 seconds, with 30 failures out of 274 requests. This is consistent with backend saturation, slow dependency/database work, queueing or timeout pressure.</p></div>
+    </article>
+
+    <article class="work-card">
+      <div class="work-top"><span class="severity critical">SATURATION</span><span>STRESS TEST · 500 USERS</span></div>
+      <h3>Capacity limit observed under heavier concurrency</h3>
+      <p>The 500-user run produced 23,408 requests with a 100% failure rate. The median was only 34 ms while the average reached 1.41 seconds and the maximum reached 225.89 seconds, indicating a highly skewed response distribution and severe failure behavior under load.</p>
+      <div class="stress-stats"><div><strong>500</strong><span>users</span></div><div><strong>100%</strong><span>failures</span></div><div><strong>71.8</strong><span>RPS</span></div><div><strong>225.9s</strong><span>max latency</span></div></div>
+      <img class="evidence" src="assets/evidence/locust-500-users-sanitized.png" alt="Sanitized Locust results for a 500-user stress test">
+      <div class="analysis"><span>WHAT THE RESULT SUGGESTS</span><p>The low median alongside a much larger average and extreme maximum suggests many requests fail quickly while a smaller subset becomes severely delayed. The next diagnostic step would be correlation with server CPU/memory, database latency, connection pools, upstream dependencies and timeout/error logs.</p></div>
+    </article>
+  </div>
+</section>
+
+<section id="research" class="section shell band">
+  <div class="section-kicker">03 · SECURITY RESEARCH</div>
+  <div class="section-intro heading-only"><h2>Selected <em>case studies.</em></h2><p class="muted">Sanitized evidence and vulnerability classes from authorized testing and responsible security research.</p></div>
+  <div class="research-grid">
+    <article class="research-card"><span class="case-number">01</span><h3>Object-level authorization</h3><p>Validated cross-account access to a resource by manipulating an object identifier and comparing behavior between controlled accounts.</p><div class="tag-row"><span>BOLA</span><span>IDOR</span><span>Access Control</span></div></article>
+    <article class="research-card"><span class="case-number">02</span><h3>Function-level authorization</h3><p>Tested sensitive backend functions for consistent authorization enforcement and identified a function that could be invoked outside its intended privilege boundary.</p><div class="tag-row"><span>BFLA</span><span>Authorization</span></div></article>
+    <article class="research-card"><span class="case-number">03</span><h3>Information disclosure</h3><p>Identified verbose production error output exposing implementation details and internal application information beyond what a normal user should receive.</p><div class="tag-row"><span>Misconfiguration</span><span>Disclosure</span></div></article>
+  </div>
+</section>
+
+<section id="fieldwork" class="section shell">
+  <div class="section-heading">
+    <div><span class="eyebrow-text">04 · FIELD WORK &amp; REPRESENTATION</span><h2>Representing <em>National CERT Pakistan.</em></h2></div>
+    <p class="section-intro">PCC 2025 · Pak-Crypt International Symposium on Cybersecurity · Air University, Islamabad. Exhibition participation as an exhibitor representing National CERT Pakistan.</p>
+  </div>
+  <div class="gallery-grid">
+    <figure class="gallery-feature"><img src="assets/exhibition/pcc-01.jpg" alt="Hamza Saeed at the National CERT Pakistan exhibition booth during PCC 2025"><figcaption>Exhibition floor · National CERT Pakistan booth</figcaption></figure>
+    <figure><img src="assets/exhibition/pcc-02.jpg" alt="Hamza Saeed at the PCC 2025 cybersecurity symposium backdrop"><figcaption>PCC 2025 · Symposium backdrop</figcaption></figure>
+    <figure class="badge-figure"><img src="assets/exhibition/pcc-badge.jpg" alt="PCC 2025 exhibitor badge for Hamza Saeed"><figcaption>Official exhibitor badge</figcaption></figure>
+  </div>
+</section>
+
+<section id="projects" class="section shell section-border-top">
+  <div class="section-kicker">05 · PROJECTS</div>
+  <div class="section-intro heading-only"><h2>Built to make security work <em>faster.</em></h2></div>
+  <div class="project-feature"><div class="project-index">/ FYP</div><div><h3>Automated Web Security Testing Framework</h3><p>A modular Python framework for web application security testing, including reconnaissance, technology/WAF identification, JavaScript enumeration, authentication workflow testing and XSS testing.</p><div class="chips"><span>Python</span><span>Selenium</span><span>Web Security</span><span>Automation</span></div><a class="inline-link" href="https://github.com/hamzasaeed687/Web-Vulnerability-FYP" target="_blank" rel="noopener">View project on GitHub <span>↗</span></a></div></div>
+  <div class="project-grid"><article><span class="project-dot"></span><h3>Security Automation</h3><p>Custom Python utilities for reconnaissance, endpoint discovery and repetitive security testing workflows.</p></article><article><span class="project-dot"></span><h3>IoT Environmental Monitoring</h3><p>Arduino and ESP8266-based monitoring using DHT11 sensors with cloud monitoring and automated alerts.</p></article><article><span class="project-dot"></span><h3>Blockchain Fundamentals Research</h3><p>Implemented hashing, nonce generation and proof-of-work concepts with interactive simulations.</p></article><article><span class="project-dot"></span><h3>IoT Smart Fire Prevention</h3><p>Cisco Packet Tracer simulation featuring RFID access control, smoke detection and automated sprinkler activation.</p></article></div>
+</section>
+
+<section id="credentials" class="section shell band">
+  <div class="section-kicker">06 · CREDENTIALS</div>
+  <div class="section-intro two-col credentials-intro"><h2>Recognition that <em>backs the work.</em></h2><div><p>Professional recognition and credentials supporting security research, cybersecurity training and professional development.</p></div></div>
+  <div class="credential-grid">
+    <article class="credential-card"><div class="credential-mark">HIGH</div><div><span class="credential-type">NATIONAL CERT PAKISTAN</span><h3>Certificate of Recognition</h3><p>Recognition for responsibly identifying and reporting a high-severity security vulnerability.</p><a class="text-link" href="certificates/VDP-Certificate-PKC-CPVRO-25-0071.pdf" target="_blank" rel="noopener">Open certificate ↗</a></div></article>
+    <article class="credential-card"><div class="credential-mark">CN</div><div><span class="credential-type">CYBERNEST</span><h3>Soft Skills Certificate</h3><p>Soft communication skills certificate completed through the CyberNest initiative to strengthen professional communication and interpersonal skills.</p><a class="text-link" href="certificates/Soft-Skill-Cert-CyberNest-CNIC-Hidden.pdf" target="_blank" rel="noopener">Open redacted certificate ↗</a></div></article>
+    <article class="credential-card"><div class="credential-mark">✦</div><div><span class="credential-type">NATIONAL CERT PAKISTAN · CYBERNEST</span><h3>Letter of Appreciation</h3><p>Formal appreciation for participation and contributions to the cybersecurity training initiative.</p><a class="text-link" href="certificates/Letter-of-Appreciation-National-CERT.pdf" target="_blank" rel="noopener">Open letter ↗</a></div></article>
+    <article class="credential-card"><div class="credential-mark">CV</div><div><span class="credential-type">PROFESSIONAL PROFILE</span><h3>Curriculum Vitae</h3><p>Full professional resume covering penetration testing, security research, technical skills, education and projects.</p><a class="text-link" href="assets/Hamza-Saeed-CV.pdf" target="_blank" rel="noopener">Open CV ↗</a></div></article>
+  </div>
+</section>
+
+<section id="approach" class="section shell section-border-top">
+  <div class="section-heading"><div><span class="eyebrow-text">07 · APPROACH</span><h2>Security testing with a <em>hands-on mindset.</em></h2></div><p class="section-intro">A practical testing approach that follows application behavior and attack surface instead of repeating the same checklist for every assessment.</p></div>
+  <div class="focus-grid">
+    <article class="focus-card"><span class="card-number">01</span><h3>Web Application Security</h3><p>Authentication, session management, authorization, business logic, input validation, client-side behavior, configuration and application-specific attack scenarios.</p></article>
+    <article class="focus-card"><span class="card-number">02</span><h3>API Security</h3><p>Manual HTTP request analysis, parameter manipulation, authorization testing, API workflow validation and backend behavior assessment.</p></article>
+    <article class="focus-card"><span class="card-number">03</span><h3>Access Control</h3><p>Controlled multi-account testing for authorization boundaries, object access, role restrictions and business-function permissions.</p></article>
+    <article class="focus-card"><span class="card-number">04</span><h3>Python Automation</h3><p>Purpose-built Python tooling for reconnaissance, repetitive security checks and testing workflows that benefit from automation.</p></article>
+  </div>
+</section>
+
+<section id="contact" class="contact-section shell">
+  <div class="section-kicker">08 · CONTACT</div>
+  <h2>Let's talk <em>security.</em></h2>
+  <p>Open to penetration testing, application security and cybersecurity opportunities.</p>
+  <div class="contact-actions"><a class="button button-primary" href="mailto:hamzasaeed1098@gmail.com">Get in touch <span>↗</span></a><a class="button button-ghost" href="assets/Hamza-Saeed-CV.pdf" target="_blank" rel="noopener">View CV <span>↗</span></a></div>
+  <div class="contact-links"><a href="mailto:hamzasaeed1098@gmail.com">hamzasaeed1098@gmail.com</a><a href="https://linkedin.com/in/hamza-saeed-a8143332a" target="_blank" rel="noopener">LinkedIn ↗</a><a href="https://github.com/hamzasaeed687" target="_blank" rel="noopener">GitHub ↗</a></div>
+</section>
+</main>
+<footer class="site-footer shell"><span>© 2026 Hamza Saeed</span><span>WEB APPLICATION &amp; API SECURITY</span></footer>
+<script src="script.js"></script>
+</body>
+</html>
